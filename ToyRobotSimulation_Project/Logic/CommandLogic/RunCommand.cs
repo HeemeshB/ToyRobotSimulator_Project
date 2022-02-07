@@ -3,6 +3,9 @@ using ToyRobotSimulator_Project.Models;
 
 namespace ToyRobotSimulator_Project.Logic.CommandLogic
 {
+    /// <summary>
+    /// Executes verified user command
+    /// </summary>
     public class RunCommand : IRunCommand
     {
         public void Execute(Command fullCommand, ToyRobot toyRobot, TableTop tableTop)

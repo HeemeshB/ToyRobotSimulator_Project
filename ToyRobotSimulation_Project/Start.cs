@@ -22,11 +22,13 @@ namespace ToyRobotSimulator_Project
         {
             Console.WriteLine("Toy Robot Simulator");
 
+            // Setup
             var table = new TableTop(5, 5);
             var toyRobot = new ToyRobot();
 
             while (true)
             {
+                // Retrieve user input
                 Console.WriteLine("Please enter a command");
                 var inputCommand = Console.ReadLine();
                 
@@ -35,8 +37,10 @@ namespace ToyRobotSimulator_Project
                     continue;
                 }
 
+                // Verify user input
                 var fullCommand = _verificationService.VerifyCommand(inputCommand);
 
+                // Execute user command
                 _runCommand.Execute(fullCommand, toyRobot, table);
             }
         }
