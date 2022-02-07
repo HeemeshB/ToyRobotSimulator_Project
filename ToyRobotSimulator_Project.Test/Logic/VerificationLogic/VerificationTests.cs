@@ -132,5 +132,38 @@ namespace ToyRobotSimulator_Project.Test.Logic.VerificationLogic
             Assert.AreEqual(2, verifiedCommand.Position.PositionY);
             Assert.AreEqual(CardinalDirection.West, verifiedCommand.Position.Direction);
         }
+
+        [TestMethod]
+        [DataRow("MOV")]
+        [DataRow("MOVEMENT")]
+        [ExpectedException(typeof(Exception))]
+        public void VerifyMisspellingCommandOption_ReturnsException(string command)
+        {
+            var verification = new Verification();
+
+            verification.VerifyCommand(command);
+
+        }
+
+        [TestMethod]
+        [DataRow("PLACE 1,1,1,NORTH")]
+        [DataRow("PLACE 1,NORTH")]
+        [ExpectedException(typeof(Exception))]
+        public void VerifyPositionFormat_ReturnsException(string command)
+        {
+            var verification = new Verification();
+            
+            verification.VerifyCommand(command);
+        }
+
+        [TestMethod]
+        [DataRow("PLACE 1,1,NOR")]
+        [ExpectedException(typeof(Exception))]
+        public void VerifyMisspellingCardinalDirection_ReturnsException(string command)
+        {
+            var verification = new Verification();
+
+            verification.VerifyCommand(command);
+        }
     }
 }
